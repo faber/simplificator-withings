@@ -63,6 +63,14 @@ class Withings::User
     connection.get_request('/v2/sleep', params.merge(:action => :get))
   end
 
+  # Get sleep summary data
+  # - :startdateymd Date in unix epoch start time for the log.
+  # - :enddateymd Date in unix epoch end time for the log.
+  # - :lastupdate Date in unix epoch
+  # Either the lastupdate or the stardateymd/enddateymd must be used
+  def get_sleep_summary(params = {})
+    connection.get_request('/v2/sleep', params.merge(:action => :getsummary))
+  end
 
   # list measurement groups
   # The limit and offset parameters are converted to will_paginate style parameters (:per_page, :page)
