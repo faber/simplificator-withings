@@ -5,6 +5,7 @@ class Withings::ApiError < StandardError
   ERR_MISMATCHED_OAUTH_CREDENTIALS = 250
   ERR_INVALID_EMAIL = 264
   ERR_TEMPORARY_SERVER_ERROR = 284
+  ERR_INVALID_TOKEN = 283
   ERR_NO_SUBSCRIPTION_FOUND = 286
   ERR_INVALID_CALLBACK_URL = 293
   ERR_CANNOT_DELETE_SUBSCRIPTION = 294
@@ -29,6 +30,8 @@ class Withings::ApiError < StandardError
       lambda() {|status, path, params| "The email address '#{params[:email]}' is either unknown or invalid"},
     ERR_TEMPORARY_SERVER_ERROR =>
       lambda() {|status, path, params| "Temporary Server Error" },
+    ERR_INVALID_TOKEN =>
+      lambda() {|status, path, params| "Token is invalid or does not exist" },
     ERR_NO_SUBSCRIPTION_FOUND =>
       lambda() {|status, path, params| "No subscription for '#{params[:callbackurl]}' was found" },
     ERR_INVALID_CALLBACK_URL =>
